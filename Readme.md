@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Александр Постников](https://up.htmlacademy.ru/javascript/9/user/210747).
-* Наставник: `Неизвестно`.
+* Наставник: [Игорь Кузнецов](https://github.com/gare4ka).
 
 ---
 
