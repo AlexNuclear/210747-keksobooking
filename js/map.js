@@ -52,27 +52,25 @@ for (var i = 0; i < 8; i++) {
     description: description,
     photos: photos,
     location: {
-      x: getLocationX,
-      y: getLocationY
+      x: getLocationX(300,900),
+      y: getLocationY(100,500)
     }
   };
+  var mapPin = document.createElement ('div');
+  mapPin.className = 'pin';
+  mapPin.innerHTML = '<img src="' + template.avatar + '">';
+  var pinImage = mapPin.children[0]
+  pinImage.className = 'rounded';
+  pinImage.style.width = 40 + 'px';
+  pinImage.style.height = 40 + 'px';
   templates.push(template);
-}
+  mapPin.style.left = (template.location.x - 28) + 'px';
+  mapPin.style.top = (template.location.y - 38) + 'px';
+  var fragment = document.createDocumentFragment();
+  fragment.appendChild(mapPin);
+ document.querySelector('.tokyo__pin-map').appendChild(fragment);
 
-var mapPin = document.createElement ('div');
-mapPin.className = 'pin';
-mapPin.style.left = (locationX - 28) + 'px';
-mapPin.style.top = (locationY - 38) + 'px';
-mapPin.innerHTML = '<img src="' + template.avatar + '">';
-var pinImage = mapPin.children[0]
-pinImage.className = 'rounded';
-pinImage.style.width = 40 + 'px';
-pinImage.style.height = 40 + 'px';
-
-var fragment = document.createDocumentFragment();
-fragment.appendChild(mapPin);
-document.querySelector('.tokyo__pin-map').appendChild(fragment);
-
+};
 var lodgeTemplate = document.querySelector('#lodge-template');
 var titleElement  = document.querySelector('.lodge__title');
 var data = templates[0].title;
@@ -94,17 +92,14 @@ var checkElement  = document.querySelector('.lodge__checkin-time');
 var data = 'Заезд после ' + templates[0].checkin + ' выезд до ' + templates[0].checkout;
 checkElement.innerHTML = data;
 
-var featuresElement  = document.querySelector('.lodge__features');
 
-var featuresElement  = document.querySelector('.lodge__features');
-var featuresCreateElement = document.createElement ('span');
-var featuresElements = document.querySelector('Features__image');
-var feature = [];
+var featuresElements = document.querySelector('.lodge__features');
 var featureItem = '';
-var getFeaturesNames = function () {
-for (var i = 0; i < features.length; i++) {
-  var featureItem = features[i];
-  }
-};
 
-console.log(featureItem);
+for (var i = 0; i < features.length; i++) {
+  var featuresCreateElement = document.createElement('span');
+  featuresCreateElement.className = 'feature__image' + ' ' + 'feature__image--' + features[i];
+  featuresElements.appendChild(featuresCreateElement);
+  }
+
+
