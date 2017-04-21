@@ -29,12 +29,10 @@ var photos = [];
 var getLocationX = function (min,max) {
   return Math.floor(Math.random() * (max - min)) + min;
 };
-var locationX = getLocationX (300,900);
 
 var getLocationY = function (min,max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-var locationY = getLocationY (100,500);
 
 var templates = [];
 for (var i = 0; i < 8; i++) {
@@ -102,4 +100,12 @@ for (var i = 0; i < features.length; i++) {
   featuresElements.appendChild(featuresCreateElement);
   }
 
+var dialogWindow = document.querySelector('.dialog')
+var Pins = document.querySelectorAll('.pin');
 
+popUp.addEventListener('click', function(evt) {
+});
+
+for (var i = 0;i < Pins.length; i++) {
+    popUp.classList.add('pin--active');
+}
