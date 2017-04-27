@@ -54,6 +54,7 @@ for (var i = 0; i < 8; i++) {
       y: getLocationY(100,500)
     }
   };
+
   var mapPin = document.createElement ('div');
   mapPin.className = 'pin';
   mapPin.innerHTML = '<img src="' + template.avatar + '">';
@@ -62,6 +63,7 @@ for (var i = 0; i < 8; i++) {
   pinImage.style.width = 40 + 'px';
   pinImage.style.height = 40 + 'px';
   templates.push(template);
+
   mapPin.style.left = (template.location.x - 28) + 'px';
   mapPin.style.top = (template.location.y - 38) + 'px';
   var fragment = document.createDocumentFragment();
@@ -101,11 +103,22 @@ for (var i = 0; i < features.length; i++) {
   }
 
 var dialogWindow = document.querySelector('.dialog')
-var Pins = document.querySelectorAll('.pin');
+var pins = document.querySelectorAll('.pin');
+var pinsArray = Array.from(pins)
+var setupClose = dialogWindow.querySelector('.dialog__close');
+var closeButton = dialogWindow.querySelector('.dialog__close');
 
-popUp.addEventListener('click', function(evt) {
+var onPinClick = function(evt){
+  dialogWindow.classList.remove('hidden')
+};
+
+var onCloseButtonClick = function(evt){
+  dialogWindow.classList.add('hidden')
+};
+
+pinsArray.forEach(function(pin,i) {
+  pin.addEventListener('click',onPinClick);
 });
 
-for (var i = 0;i < Pins.length; i++) {
-    popUp.classList.add('pin--active');
-}
+closeButton.addEventListener('click',onCloseButtonClick);
+
